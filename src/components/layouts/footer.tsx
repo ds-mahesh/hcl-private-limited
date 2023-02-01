@@ -1,69 +1,118 @@
 import * as React from "react";
 import "../../index.css";
-import logofooter from "../../images/logo-footer.svg";
-import facebook from "../../images/facebook.svg";
-import instagram from "../../images/instagram.svg";
-import twitter from "../../images/twitter.svg";
-import youtube from "../../images/youtube.svg";
-import printest from "../../images/printest.svg";
 import { cookieText, cookiesUrl } from "../../../sites-global/global"
 import CookieConsent from "react-cookie-consent";
 import { StaticData } from "../../../sites-global/staticData";
 import { useEffect, useState } from "react";
 import Link from "../commons/Link";
 
-const Footer = ( props: any) => { 
-	let NewVAr : any = props.label;
-	console.log(props.label,"Props");
-	const linkDoms = NewVAr.map((link:any) => (
-	  <div className="grid place-items-center"> 
-	  <a className="navbar-item" href={link.link} >   
-		 <span> {link.label}</span>
-		  <img src={link.icon?.url} className="h-10 w-10"/><br/>          
-		</a>
-		</div>      
+// const Footer = ( props: any) => { 
+// 	let NewVAr : any = props.label;
+// 	console.log(props.label,"Props");
+// 	const linkDoms = NewVAr.map((link:any) => (
+// 	  <div className="grid place-items-center"> 
+// 	  <a className="navbar-item" href={link.link} >   
+// 		 <span> {link.label}</span>
+// 		  <img src={link.icon?.url} className="h-10 w-10"/><br/>          
+// 		</a>
+// 		</div>      
   
+// 	));
+// 	const Services = props?._site?.c_digitalBusiness?.links?.map((link: any) => (
+// 		<a className="navbar-item" href={link.link} >
+// 		  <span>{link.label}</span><br />
+// 		</a>
+// 	  ));
+const Footer = (props: any) => {
+	console.log(props)
+	React.useEffect(() => {
+	  document.body.setAttribute("id", "body");
+	})
+	const toggle = () => {
+	  (document.getElementById("body") as HTMLInputElement).classList.toggle('');
+	};
+	const Business = props?._site?.c_digitalBusiness?.map((link: any) => (
+	  <a style={{ font: "caption", color: "black" }} className="navbar-item" href={link.link} >
+		<span>{link.label}</span><br />
+	  </a>
 	));
-	const Services = props?._site?.c_digitalBusiness?.links?.map((link: any) => (
-		<a className="navbar-item" href={link.link} >
+
+	const Industries = props?._site?.c_industries?.map((link: any) => (
+		<a style={{ font: "caption", color: "black" }} className="navbar-item" href={link.link} >
 		  <span>{link.label}</span><br />
 		</a>
 	  ));
+
+	  const Aboutus = props?._site?.c_aboutus?.map((link: any) => (
+		<a style={{ font: "caption", color: "black" }} className="navbar-item" href={link.link} >
+		  <span>{link.label}</span><br />
+		</a>
+	  ));
+
+	  const Careers = props?._site?.c_careers?.map((link: any) => (
+		<a style={{ font: "caption", color: "black" }} className="navbar-item" href={link.link} >
+		  <span>{link.label}</span><br />
+		</a>
+	  ));
+
+	//   const Description = props?._site?.c_footerDescription?.map((link: any) => (
+	// 	<a style={{ font: "caption", color: "black" }} className="navbar-item" href={link.link} >
+	// 	  <span>{link.label}</span><br />
+	// 	</a>
+	//   ));
 
 	
 
 
 	return (
 		<>
-
 			<footer className="site-footer">
-
 				<div className="container">
+					<div className="store-locator">					   
+		              <div className="text-2xl">Digital Business 
+                           <div className="flex gap-x-4 text-2xl font-semibold text-body  ">
+		                       {props._site?.c_digitalBusiness?.headingName}
+                               <ul style={{ color: "black" }} className="menu_footer">
+                               <li><a >{Business}</a><br /></li>
+                               </ul>
+                           </div>
+			          </div>					  					  					 
+				    </div>
+					<div className="store-locator">					   
+		              <div className="text-2xl">Industries 
+                           <div className="flex gap-x-4 text-[14px] font-semibold text-body  ">
+		                       {props._site?.c_industries?.headingName}
+                               <ul style={{ color: "black" }} className="menu_footer text-2xl">
+                               <li><a >{Industries}</a><br /></li>
+                               </ul>
+                           </div>
+			          </div>					  					  					 
+				    </div>
+					<div className="store-locator">					   
+		              <div className="text-2xl">About-us 
+                           <div className="flex gap-x-4 text-[14px] font-semibold text-body  ">
+		                       {props._site?.c_aboutus?.headingName}
+                               <ul style={{ color: "black" }} className="menu_footer text-2xl">
+                               <li><a >{Industries}</a><br /></li>
+                               </ul>
+                           </div>
+			          </div>					  					  					 
+				    </div>
+					<div className="store-locator">					   
+		              <div className="text-2xl">Careers 
+                           <div className="flex gap-x-4 text-[14px] font-semibold text-body  ">
+		                       {props._site?.c_careers?.headingName}
+                               <ul style={{ color: "black" }} className="menu_footer text-2xl">
+                               <li><a >{Industries}</a><br /></li>
+                               </ul>
+                           </div>
+			          </div>					  					  					 
+				    </div>
 
-					<div className="store-locator">
-					<div className="company-logo mr-4">
-							{/* <img src={footer.c_matalan_footer_logo.url} alt="logo"/> */}
-							</div>
-						
-          <div className="text-2xl">Social Media Links
-           <div className="flex gap-x-4 text-sm font-semibold text-body  ">
-              {linkDoms} 
-            </div>
-			</div>
-						<div className="store-inner flex flex-raw">
-						<div className="flex gap-x-4 text-sm font-semibold text-body  ">
-						{/* {props._site?.c_digitalBusiness?.headingName} */}
-            </div>
-						</div>
-						
-
-						
 
 
 
-
-					</div>
-					
+	      				
 
 					<div className="link-sec-footer ">
 					{/* {footer.c_customer_services?
@@ -115,13 +164,9 @@ const Footer = ( props: any) => {
 					</div>
 					<div className="copyright-bx">
 						{/* <span className="text-xs flex-wrap" data-copyright="">
-							{footer.c_footerDescription}</span> */}
-
-						
+							{footer.c_footerDescription}</span> */}						
 					</div>
-
-				</div>
-
+				</div>				                                                                         
 			</footer>
 
 			<CookieConsent

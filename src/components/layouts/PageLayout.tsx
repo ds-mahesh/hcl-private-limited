@@ -13,9 +13,9 @@ const PageLayout = ({ _site, children }: Props) => {
   return (
     <>
     <div className="min-h-screen">
-      <Header label={_site.c_header_link} url={""}/> 
+      <Header _site={_site}/> 
       {children}
-      <Footer label={_site.c_socialicons} />
+      <Footer _site={_site} />
       
       {/* <Footer label={_site.c_digitalBusiness}/> */}
     </div>
