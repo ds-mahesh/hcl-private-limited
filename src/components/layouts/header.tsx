@@ -4,7 +4,7 @@ import logo from "../../images/logo copy.png";
 import "../../index.css";
 
 const Header = ( props : any) => {
-  const {label,url,images}=props
+  const {label,images}=props
   
   let NewVAr : any = props.label;
   // console.log(props.label,"Props");

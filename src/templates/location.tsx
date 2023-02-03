@@ -8,8 +8,8 @@ import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { JsonLd } from "react-schemaorg";
 import Opening from "../components/commons/openClose";
 import { nearByLocation } from "../types/nearByLocation";
-import Logo from "../images/logo-header.svg"
-import offerBanner from "../images/offer-banner.jpg"
+// import Logo from "../images/logo-header.svg"
+// import offerBanner from "../images/offer-banner.jpg"
 import IframeMap from "../components/locationDetail/IframeMap";
 import "../index.css";
 import {
@@ -38,7 +38,7 @@ import StoreHighlight from "../components/locationDetail/SoreHighlight";
 import OpenClose from "../components/commons/openClose";
 import Faq from "../components/locationDetail/Faqs";
 import { StaticData } from "../../sites-global/staticData";
-
+import Header from "../components/layouts/header";
 import {apikey_for_entity, baseuRL,stagingBaseurl,AnalyticsEnableDebugging,AnalyticsEnableTrackingCookie, favicon } from "../../sites-global/global";
 import {
   AnalyticsProvider,
@@ -71,13 +71,14 @@ export const config: TemplateConfig = {
       "displayCoordinate",
       "cityCoordinate",
       "c_details",
-      "c_hCLHeaderLogo",
-      "c_header_link",
-      "c_footerDescription",
-      "c_socialicons",
-      "c_digitalBusiness",
-      "c_industries",
-      "c_footerlogo",
+      "c_about",
+      "c_servicesIn",
+      "c_faqs.question",
+      "c_faqs.answer",
+      "c_bannerphoto",
+      "c_bannerImage",
+      
+      
       
     ],
     // Defines the scope of entities that qualify for this stream.
@@ -274,7 +275,7 @@ const Location: Template<ExternalApiRenderData> = ({
     hours,
     mainPhone,
     photoGallery,
-    c_banner_image,
+    c_bannerImage,
     c_canonical,
     description,
     additionalHoursText,
@@ -283,8 +284,17 @@ const Location: Template<ExternalApiRenderData> = ({
     displayCoordinate,
     cityCoordinate,
     c_details,
+    c_about,
+    c_servicesIn,
+    c_faqs,
+    c_bannerphoto,
     name
   } = document;
+  const services = c_servicesIn?.map((link: any) => (
+		<a className="navbar-item" href={link.link} >
+		  <span>{link.label}</span><br />
+		</a>
+	  ));
 
  let templateData = { document: document, __meta: __meta };
   let hoursSchema = [];
@@ -405,8 +415,10 @@ breadcrumbScheme.push({
     return element.image.url
   }) : null;
   console.log(document)
-  let bannerimage = c_banner_image && c_banner_image.image.url;
+  let bannerimage = c_bannerImage && c_bannerImage?.image?.url;
 
+
+  
 
   return (
 
@@ -451,11 +463,11 @@ breadcrumbScheme.push({
         {" "}
         <AnalyticsScopeProvider name={""}>
       <PageLayout _site={_site}>
-
-
+      <Header _site={_site}/> 
+      <Banner c_bannerImage={c_bannerImage.url} name={name}/>
       <div className="container">
             <div className='banner-text banner-dark-bg justify-center text-center'>
-              <h1 className="">{name} {name}</h1>
+              <h1 className="">{name} </h1>
                 <div className="openClosestatus detail-page closeing-div">
                   <OpenClose timezone={timezone} hours={hours} />
                 </div> 
@@ -474,8 +486,7 @@ breadcrumbScheme.push({
                 <CustomMap prop={yextDisplayCoordinate ? yextDisplayCoordinate : displayCoordinate} />
               </div>
           }
-        </div>
-  
+        </div> 
         <div className="nearby-sec">
           <div className="container">
             <div className="sec-title"><h2 className="">{StaticData.NearStoretext}</h2></div>
@@ -484,11 +495,44 @@ breadcrumbScheme.push({
                 <Nearby externalApiData={externalApiData} /> 
              : ''}
             </div>
-          </div>
-          
+          </div>          
         </div>
-
-      </PageLayout>
+        <div className="flex">
+           <div className="w-1/2"> {c_about?.map((i:any)=>{
+             return (
+                   <img src={i.image?.url} className="card-img-top w-5/6  h-96" alt="..."/>
+                    )
+                    
+               })}
+               </div>
+              <div className="w-1/2 flex flex-col space-y-4 text-xl ">{c_details.description}
+                 <div><a href="#">
+                   <div className=""> {<Cta
+                      buttonText="About-us"
+                      url="#"
+                      style="bg-[#1da1f2] text-orange  shadow-xl"
+                      ></Cta>  }
+                   </div> </a>
+                 </div> 
+              </div> 
+              <Cta />
+           </div>     
+        <Footer _site={_site}/>   
+        <div className="flex">    
+           <div className="text-2xl pl-8">Services				   		          
+                <div className="text-xl ">
+		                {c_servicesIn?.headingName}
+                      <ul className="menu_footer ">
+                         <li><a >{services}</a><br /></li>
+                      </ul>
+                </div>
+			        </div>
+              <Faq faqs={c_faqs} />					  					  					 
+				   </div>  
+        <div>
+     </div>
+     {/* <div><About about={c_about}/></div> */}
+     </PageLayout>
       </AnalyticsScopeProvider>
       </AnalyticsProvider>
     </>

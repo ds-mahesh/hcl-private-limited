@@ -28,49 +28,55 @@ const Footer = (props: any) => {
 	React.useEffect(() => {
 	  document.body.setAttribute("id", "body");
 	})
-	const toggle = () => {
-	  (document.getElementById("body") as HTMLInputElement).classList.toggle('');
-	};
+	// const toggle = () => {
+	//   (document.getElementById("body") as HTMLInputElement).classList.toggle('');
+	// };
 	const Business = props?._site?.c_digitalBusiness?.map((link: any) => (
-	  <a style={{ font: "caption", color: "black" }} className="navbar-item" href={link.link} >
+	  <a className="navbar-item" href={link.link} >
 		<span>{link.label}</span><br />
 	  </a>
 	));
 
 	const Industries = props?._site?.c_industries?.map((link: any) => (
-		<a style={{ font: "caption", color: "black" }} className="navbar-item" href={link.link} >
+		<a className="navbar-item" href={link.link} >
 		  <span>{link.label}</span><br />
 		</a>
 	  ));
 
 	  const Aboutus = props?._site?.c_aboutus?.map((link: any) => (
-		<a style={{ font: "caption", color: "black" }} className="navbar-item" href={link.link} >
+		<a className="navbar-item" href={link.link} >
 		  <span>{link.label}</span><br />
 		</a>
 	  ));
 
 	  const Careers = props?._site?.c_careers?.map((link: any) => (
-		<a style={{ font: "caption", color: "black" }} className="navbar-item" href={link.link} >
+		<a className="navbar-item" href={link.link} >
 		  <span>{link.label}</span><br />
 		</a>
 	  ));
 
-	//   const Description = props?._site?.c_footerDescription?.map((link: any) => (
-	// 	<a style={{ font: "caption", color: "black" }} className="navbar-item" href={link.link} >
+	  const Icons = props?._site?.c_socialicons?.map((link: any) => (
+		<div className="grid place-items-center"> 
+          <a className="navbar-item" href={link.link} >   
+                 <span className="text-xl  "> {link.label}</span>
+                <img src={link.icon?.url} className="inline-flex flex-col space-y-0 h-7 w-7"/><br/>          
+         </a>
+       </div>      
+	  ));
+
+	//   const services = c_servicesIn?.map((link: any) => (
+	// 	<a className="navbar-item" href={link.link} >
 	// 	  <span>{link.label}</span><br />
 	// 	</a>
 	//   ));
 
-	
-
-
 	return (
 		<>
-			<footer className="site-footer">
-				<div className="container">
+			<footer className="site-footer ">
+				<div className="container bg-slate-900">
 					<div className="store-locator">					   
 		              <div className="text-2xl">Digital Business 
-                           <div className="flex gap-x-4 text-2xl font-semibold text-body  ">
+                           <div className="text-xl ">
 		                       {props._site?.c_digitalBusiness?.headingName}
                                <ul style={{ color: "black" }} className="menu_footer">
                                <li><a >{Business}</a><br /></li>
@@ -80,9 +86,9 @@ const Footer = (props: any) => {
 				    </div>
 					<div className="store-locator">					   
 		              <div className="text-2xl">Industries 
-                           <div className="flex gap-x-4 text-[14px] font-semibold text-body  ">
+                           <div className=" text-xl">
 		                       {props._site?.c_industries?.headingName}
-                               <ul style={{ color: "black" }} className="menu_footer text-2xl">
+                               <ul style={{ color: "black" }} className="menu_footer  ">
                                <li><a >{Industries}</a><br /></li>
                                </ul>
                            </div>
@@ -90,85 +96,44 @@ const Footer = (props: any) => {
 				    </div>
 					<div className="store-locator">					   
 		              <div className="text-2xl">About-us 
-                           <div className="flex gap-x-4 text-[14px] font-semibold text-body  ">
+                           <div className="text-xl">
 		                       {props._site?.c_aboutus?.headingName}
-                               <ul style={{ color: "black" }} className="menu_footer text-2xl">
-                               <li><a >{Industries}</a><br /></li>
+                               <ul style={{ color: "black" }} className="menu_footer ">
+                               <li><a >{Aboutus}</a><br /></li>
                                </ul>
                            </div>
 			          </div>					  					  					 
 				    </div>
 					<div className="store-locator">					   
 		              <div className="text-2xl">Careers 
-                           <div className="flex gap-x-4 text-[14px] font-semibold text-body  ">
+                           <div className="text-xl ">
 		                       {props._site?.c_careers?.headingName}
-                               <ul style={{ color: "black" }} className="menu_footer text-2xl">
-                               <li><a >{Industries}</a><br /></li>
+                               <ul style={{ color: "black" }} className="menu_footer ">
+                               <li><a >{Careers}</a><br /></li>
                                </ul>
                            </div>
 			          </div>					  					  					 
 				    </div>
-
-
-
-
-	      				
-
-					<div className="link-sec-footer ">
-					{/* {footer.c_customer_services?
-						<div className="footer-block">
-							<h4 className="footer-block-title">{footer.c_customer_services.headerLinksHeading}</h4>
-							<ul className="list-none">
-								{footer.c_customer_services.headerLinks.map((customerService: any) => {
-									return (<li>
-											<Link props={customerService}/>
-										</li>)
-								})}
-							</ul>
-						</div>:''}
-						{footer.c_about_matalan?
-						<div className="footer-block">
-							<h4 className="footer-block-title">{footer.c_about_matalan.headerLinksHeading}</h4>
-							<ul className="list-none"><li>{footer.c_about_matalan.headerLinksHeading}</li>
-								{footer.c_about_matalan.headerLinks.map((aboutMatalan: any) => {
-									return (<li>
-										<Link props={aboutMatalan}/>
-										</li>)
-								})}
-							</ul>
-						</div>:''}
-						{footer.c_our_website? */}
-						{/* <div className="footer-block">
-							<h4 className="footer-block-title">{footer.c_our_website.headerLinksHeading}</h4>
-							<ul className="list-none">
-								{footer.c_our_website.headerLinks.map((ourWebsite: any) => {
-									return (<li>
-										<Link props={ourWebsite}/>
-									</li>)
-								})}
-							</ul>
-						</div>:''} */}
-						<div className="footer-block">
-						{/* <ul className="social-media-bx">
-							{footer.c_socialIcons.map((icon: any) => {
-								return (
-
-									<>
-										<li className=""> <a href={icon.cTA.link} target="_blank"><img src={icon.icon.url} height="20" alt="social" width="21" className="inline-block w-5 h-auto" /> </a> </li>
-									</>
-								)
-							})}
-						</ul> */}
-						</div>
-
-					</div>
-					<div className="copyright-bx">
-						{/* <span className="text-xs flex-wrap" data-copyright="">
-							{footer.c_footerDescription}</span> */}						
-					</div>
+				<div className="store-locator">					   
+		              <div className="text-2xl ">Social Media Links 
+                           <div className=" ">
+		                       {props._site?.c_socialicons?.headingName}
+								 {Icons}                                           
+                           </div>
+			          </div>
+					  {/* <div className="store-locator">					   
+		              <div className="text-2xl">services
+                           <div className="text-xl ">
+		                       {props.c_careers}
+                               <ul style={{ color: "black" }} className="menu_footer ">
+                               <li><a >{services }</a><br /></li>
+                               </ul>
+                           </div>
+			          </div>					  					  					 
+				    </div>					  					  					  */}
+				    </div>	      														
 				</div>				                                                                         
 			</footer>
-
 			<CookieConsent
 				buttonText={"Accept"}
 				buttonStyle={{

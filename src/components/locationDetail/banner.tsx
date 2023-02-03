@@ -1,6 +1,6 @@
 import * as React from "react";
 import OpenClose from "../commons/openClose";
-import Defaultimage from "../../images/luxurystore.jpg"
+import Defaultimage from "../../images/techno.jfif"
 
 export type Address = {
   line1: string;
@@ -14,7 +14,7 @@ type Banner = {
   name?: string;
   address?: Address;
   hours?: any;
-  timezone: any;
+  timezone?: any;
   clickcollect?: object;
   c_bannerImage?: string;
   c_locatorBannerAdditionalText?:string;
@@ -34,18 +34,21 @@ const renderPrettyAddress = (address?: Address) => {
 };
 
 const Banner = (props: Banner) => {
-  const { name, address, clickcollect, c_bannerImage,c_locatorBannerAdditionalText, children } = props;
+  const { name, address, clickcollect, c_bannerImage,c_locatorBannerAdditionalText, children} = props;
   
 
   return (
     <>
       <div className="hero-section">
         <img className="hero-image"
-          src={c_bannerImage?c_bannerImage:Defaultimage} alt="banner" width="1" height="1" />
+          src={c_bannerImage?c_bannerImage:Defaultimage} alt="banner" width="fULL" height="50" />
         <div className="hero-content">
           <div className="container">
             <div className={`banner-text  ${props.hours && props.timezone ? 'banner-dark-bg': ''}`}>
-              <h1>{name}</h1>
+              <h1 className="text-white text-3xl font-semibold">{name}</h1>
+              <p className="text-lg pt-2 text-white font-semibold">
+                {renderPrettyAddress(address)}
+              </p>
               {c_locatorBannerAdditionalText?
               <p>{c_locatorBannerAdditionalText}</p>
               :''}
@@ -62,3 +65,8 @@ const Banner = (props: Banner) => {
 };
 
       export default Banner;
+
+  
+
+
+    

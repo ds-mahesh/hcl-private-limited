@@ -1,7 +1,10 @@
 import * as React from "react";
+import { twMerge } from "tailwind-merge";
+
+
 
 type Cta = {
-  buttonText: string;
+  buttonText?: string;
   url?: string;
   style?: string;
 };

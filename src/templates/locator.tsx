@@ -20,6 +20,7 @@ import { JsonLd } from "react-schemaorg";
 import { StaticData } from "../../sites-global/staticData";
 import Header from "../components/layouts/header";
 import Footer from "../components/layouts/footer";
+import Banner from "../components/locationDetail/banner";
 import {
   AnalyticsProvider,
   AnalyticsScopeProvider,
@@ -39,7 +40,8 @@ export const config: TemplateConfig = {
       "c_socialicons",
       "c_digitalBusiness",
       "c_industries",
-      "c_footerlogo"
+      "c_footerlogo",
+      "c_bannerImage"
 
      
     ],
@@ -204,7 +206,8 @@ const Locator: Template<TemplateRenderProps>= ({
         {" "}
         <AnalyticsScopeProvider name={""}>
       <PageLayout _site={_site}>
-      {/* <Header _site={_site}/> */}
+      <Header _site={_site}/>
+      <Banner  />
         <SearchHeadlessProvider
           experienceKey={AnswerExperienceConfig.experienceKey}
           locale={AnswerExperienceConfig.locale}
@@ -218,7 +221,7 @@ const Locator: Template<TemplateRenderProps>= ({
           <SearchLayout _site={_site}/>
      
         </SearchHeadlessProvider>
-        {/* <Footer _site={_site}/> */}
+        <Footer _site={_site}/>
    
       </PageLayout>
       </AnalyticsScopeProvider>
