@@ -74,7 +74,7 @@ const Footer = (props: any) => {
 	return (
 		<>
 			<footer className="site-footer ">
-				<div style={{backgroundColor:"DarkKhaki",margin:"0px" ,padding:"0px"}} >
+				<div style={{backgroundColor:"LightGray",margin:"0px" ,padding:"0px"}} >
 				<div  className="container">
 					<div className="store-locator">					   
 		              <div className="text-2xl">Digital Business 
