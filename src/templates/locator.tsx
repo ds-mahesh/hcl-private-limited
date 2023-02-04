@@ -224,9 +224,10 @@ const Locator: Template<TemplateRenderProps>= ({
         
    
       </PageLayout>
-      <Footer _site={_site}/>
+      
       </AnalyticsScopeProvider>
       </AnalyticsProvider>
+      <Footer _site={_site}/>
     </>
   );
 };
