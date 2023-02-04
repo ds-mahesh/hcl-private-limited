@@ -24,6 +24,7 @@ import Link from "../commons/Link";
 // 		</a>
 // 	  ));
 const Footer = (props: any) => {
+	const {label,images,_site}=props;
 	console.log(props)
 	React.useEffect(() => {
 	  document.body.setAttribute("id", "body");
@@ -58,7 +59,7 @@ const Footer = (props: any) => {
 	  const Icons = props?._site?.c_socialicons?.map((link: any) => (
 		<div className="grid place-items-center"> 
           <a className="navbar-item" href={link.link} >   
-                 <span className="text-xl  "> {link.label}</span>
+                 {/* <span className="text-xl  "> {link.label}</span> */}
                 <img src={link.icon?.url} className="inline-flex flex-col space-y-0 h-7 w-7"/><br/>          
          </a>
        </div>      
@@ -73,7 +74,8 @@ const Footer = (props: any) => {
 	return (
 		<>
 			<footer className="site-footer ">
-				<div className="container bg-slate-900">
+				<div style={{backgroundColor:"DarkKhaki",margin:"0px" ,padding:"0px"}} >
+				<div  className="container">
 					<div className="store-locator">					   
 		              <div className="text-2xl">Digital Business 
                            <div className="text-xl ">
@@ -114,25 +116,25 @@ const Footer = (props: any) => {
                            </div>
 			          </div>					  					  					 
 				    </div>
-				<div className="store-locator">					   
+				  <div className="store-locator">					   
 		              <div className="text-2xl ">Social Media Links 
                            <div className=" ">
 		                       {props._site?.c_socialicons?.headingName}
 								 {Icons}                                           
                            </div>
-			          </div>
-					  {/* <div className="store-locator">					   
-		              <div className="text-2xl">services
-                           <div className="text-xl ">
-		                       {props.c_careers}
-                               <ul style={{ color: "black" }} className="menu_footer ">
-                               <li><a >{services }</a><br /></li>
-                               </ul>
-                           </div>
-			          </div>					  					  					 
-				    </div>					  					  					  */}
-				    </div>	      														
-				</div>				                                                                         
+			          </div>					 		  					  					  */}
+				    </div>	
+					<div>
+            <div style={{fontSize:"Oswald" ,backgroundColor:"",height:"70px"}} className="flex gap-x-10">
+               <img src={_site.c_footerlogo?.url} style={{height:"70px",width:"100px"}}/>
+                  <div style={{padding:"20px"}} className="flex gap-x-10 text-2xl">
+                     {_site.c_footerDescription}
+                  </div>
+            </div>
+         </div>
+					      														
+				</div>	
+				</div>		                                                                         
 			</footer>
 			<CookieConsent
 				buttonText={"Accept"}

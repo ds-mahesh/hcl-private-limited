@@ -4,7 +4,7 @@ import logo from "../../images/logo copy.png";
 import "../../index.css";
 
 const Header = ( props : any) => {
-  const {label,images}=props
+  const {label,images,_site}=props;
   
   let NewVAr : any = props.label;
   // console.log(props.label,"Props");
@@ -16,14 +16,14 @@ const Header = ( props : any) => {
 
   return (
     <>
-      
-            
-             <div style={{backgroundColor:"skyblue",height:"50px", padding:"5px",textAlign:"center",}}>
-            <div style={{marginLeft:"300px",fontSize:"Oswald"}} className="flex gap-x-10 text-lg font-semibold">
-              {linkDoms}</div>
-              
-              
+         <div>
+            <div style={{fontSize:"Oswald" ,backgroundColor:"CornflowerBlue",height:"70px"}} className="flex gap-x-10 font-semibold">
+               <img src={_site.c_hCLHeaderLogo?.url} style={{height:"70px",width:"100px"}}/>
+                  <div style={{padding:"20px"}} className="flex gap-x-10 text-2xl">
+                     {linkDoms}
+                  </div>
             </div>
+         </div>
           
     </>
   );

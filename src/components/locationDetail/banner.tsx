@@ -1,6 +1,6 @@
 import * as React from "react";
 import OpenClose from "../commons/openClose";
-import Defaultimage from "../../images/techno.jfif"
+import Defaultimage from "../../images/tech.webp"
 
 export type Address = {
   line1: string;

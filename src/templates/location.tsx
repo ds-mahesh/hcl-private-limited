@@ -497,15 +497,30 @@ breadcrumbScheme.push({
             </div>
           </div>          
         </div>
-        <div className="flex">
-           <div className="w-1/2"> {c_about?.map((i:any)=>{
+        <div className="flex" style={{backgroundColor:"DeepSkyBlue"}}>
+           <div className="w-full"> {c_about?.map((i:any)=>{
              return (
-                   <img src={i.image?.url} className="card-img-top w-5/6  h-96" alt="..."/>
+                   <img src={i.image?.url} className="card-img-top w-full " style={{paddingRight:"10px"}} alt="..."/>
                     )
                     
                })}
+           </div>
+           <div className="w-4/5">
+               <div className=""> {c_about?.map((i:any)=>{
+                   return (
+                      <div className="text-2xl">{i.description}</div>
+                    )                   
+               })}
                </div>
-              <div className="w-1/2 flex flex-col space-y-4 text-xl ">{c_details.description}
+               <div className=""> {c_about?.map((link:any)=>{
+                    return (
+                        <a className="navbar-item" href={link.cTA.link} >
+                         <button className="bg-[#1da1f2]">{link.cTA.label}</button></a>
+                    )                   
+               })}
+               </div>
+           </div>
+              {/* <div className="w-1/2 flex flex-col space-y-4 text-xl ">{c_details.description}
                  <div><a href="#">
                    <div className=""> {<Cta
                       buttonText="About-us"
@@ -514,22 +529,23 @@ breadcrumbScheme.push({
                       ></Cta>  }
                    </div> </a>
                  </div> 
-              </div> 
+              </div>  */}
               <Cta />
            </div>     
         <Footer _site={_site}/>   
-        <div className="flex">    
-           <div className="text-2xl pl-8">Services				   		          
-                <div className="text-xl ">
-		                {c_servicesIn?.headingName}
-                      <ul className="menu_footer ">
-                         <li><a >{services}</a><br /></li>
-                      </ul>
+        <div className="" style={{backgroundColor:"DarkGoldenRod"}}>    
+           <div className="text-2xl" style={{textAlign:"center"}}>Services				   		          
+                <div className="flex-none">
+		                {c_servicesIn?.headingName}  
+                    <div className="text-xl flex">                  
+                        <a className="flex gap-x-10 font-semibold">{services}</a> 
+                        </div>                     
                 </div>
-			        </div>
-              <Faq faqs={c_faqs} />					  					  					 
-				   </div>  
+			        </div>             				  					  					 
+				   </div> 
+           	 
         <div>
+        <Faq faqs={c_faqs} />
      </div>
      {/* <div><About about={c_about}/></div> */}
      </PageLayout>
